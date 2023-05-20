@@ -130,13 +130,7 @@ def order_book(orders, book, stock_name):
         are mutable lists, and mutating them during generation will affect the
         next turn!
     """
-    for t, stock, side, order, size in orders:
-        if stock_name == stock:
-            new = add_book(book.get(side, []), order, size)
-            book[side] = sorted(new, reverse = side == 'buy', key = lambda x: x[0])
-        bids, asks = clear_book(**book)
-        yield t, bids, asks
-
+    
 ################################################################################
 #
 # Test Data Persistence
